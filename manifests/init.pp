@@ -1,9 +1,9 @@
 define permute (
   $resource,
-  $uni,
-  $common,
+  $unique = {},
+  $common = {},
 ) {
 
-  resource_permute($resource, $uni, $common)
+  resource_permute($resource, $unique, $common)
 
 }
