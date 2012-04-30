@@ -5,12 +5,12 @@ Puppet::Parser::Functions::newfunction(:resource_permute) do |args|
 
   #raise ArgumentError, ("resource_permute(): wrong number of arguments (#{args.length}; must be 2)") if args.length != 2
 
-  # First arg: the resource type that you will be adding
-  # Second arg: the hash of permutable resourece
-  # Third arg: Common resources that will get added to each resource addition
+  # First arg: resource type for createion
+  # Second arg: the hash of permutable resourece paramaters
+  # Third arg: common paramaters that will belong to all resources created
 
   rec_type    = args[0]
-  hash        = args[1]
+  unique_hash = args[1]
   common_hash = args[2]
 
   # Class borrowed from:
@@ -35,18 +35,22 @@ Puppet::Parser::Functions::newfunction(:resource_permute) do |args|
     end
   end
 
-  params = ParameterHash.new.replace(hash)
+  params = ParameterHash.new.replace(unique_hash)
   params.each_config do |cfg|
-    #title = "#{cfg["os"]} #{cfg["ver"]} #{cfg["arch"]}"
     title = cfg
+
+    # if we have a common_hash, copy the enrtries out for us in the finished
+    # resource
     if common_hash.is_a?(Hash)
       common_hash.keys.each do |key|
         cfg["#{key}"] = common_hash["#{key}"]
       end
     end
-    blag = {}
-    blag["#{title}"] = cfg
-    function_create_resources([rec_type,blag])
+    # Set the title on the finished resource
+    fin = {}
+    fin["#{title}"] = title
+    # Call out to create_resoruces to do the actual work
+    function_create_resources([rec_type,fin])
   end
 
 end
