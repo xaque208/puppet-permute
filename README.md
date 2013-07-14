@@ -1,5 +1,7 @@
 # Puppet-Permute
 
+[![Build Status](https://travis-ci.org/xaque208/puppet-permute.png?branch=master)](https://travis-ci.org/xaque208/puppet-permute)
+
 A puppet utility module to create permutations of a given resource type.
 
 This is useful for generating resources for which there is a set of common as
