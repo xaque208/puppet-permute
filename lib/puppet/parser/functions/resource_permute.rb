@@ -3,7 +3,7 @@ Puppet::Parser::Functions::newfunction(:resource_permute) do |args|
 
   require 'erb'
 
-  #raise ArgumentError, ("resource_permute(): wrong number of arguments (#{args.length}; must be 2)") if args.length != 2
+  raise Puppet::ParseError, ("resource_permute(): wrong number of arguments (#{args.length}; must be 3)") if args.length != 3
 
   # First arg: resource type for createion
   # Second arg: the hash of permutable resourece paramaters
@@ -12,6 +12,18 @@ Puppet::Parser::Functions::newfunction(:resource_permute) do |args|
   rec_type    = args[0]
   unique_hash = args[1]
   common_hash = args[2]
+
+  unless rec_type.is_a? String
+    raise Puppet::Error, "resource_permute(): resource type must be a string"
+  end
+
+  unless unique_hash.is_a? Hash
+    raise Puppet::Error, "resource_permute(): unique must be a hash"
+  end
+
+  unless common_hash.is_a? Hash
+    raise Puppet::Error, "resource_permute(): common must be a hash"
+  end
 
   # Class borrowed from:
   # https://github.com/lucasdicioccio/laborantin/blob/master/lib/laborantin/core/parameter_hash.rb
