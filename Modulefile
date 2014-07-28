@@ -1,5 +1,5 @@
 name    'zleslie-permute'
-version '0.0.3'
+version '0.0.4'
 source 'git://github.com/xaque208/puppet-permute.git'
 author 'zleslie'
 license 'Apache License Version 2.0'
