@@ -12,5 +12,9 @@ define permute (
   $common = {},
 ) {
 
+  validate_string($resource)
+  validate_hash($unique)
+  validate_hash($common)
+
   resource_permute($resource, $unique, $common)
 }
