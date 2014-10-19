@@ -20,6 +20,3 @@ group :development do
   gem "puppet-blacksmith"
 end
 
-group :production do
-  gem 'ipaddress'
-end
