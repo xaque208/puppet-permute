@@ -1,9 +1,9 @@
-permute { "Colors":
-  resource  => "notify",
-  unique    => {
-    message => ["red", "blue", "green"]
+permute { 'Colors':
+  resource => 'notify',
+  unique   => {
+    message => ['red', 'blue', 'green']
   },
-  common => {
-    tag  => 'bikesheds',
+  common   => {
+    tag => 'bikesheds',
   },
 }
