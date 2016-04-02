@@ -1,6 +1,6 @@
 # Puppet-Permute
 
-[![Build Status](https://travis-ci.org/xaque208/puppet-permute.png?branch=master)](https://travis-ci.org/xaque208/puppet-permute)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/zleslie/permute.svg)]() [![Build Status](https://travis-ci.org/xaque208/puppet-permute.svg?branch=master)](https://travis-ci.org/xaque208/puppet-permute)
 
 A puppet utility module to create permutations of a given resource type.
 
